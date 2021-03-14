@@ -50,7 +50,23 @@ module.exports = {
                 }
                 
                 res.json(respuesta)
+                })
+            },
+            category: function(req, res) {
+                Product.findAll().
+                then(function(resultado) {
+                    let respuesta = {
+                        meta: {
+                            status: 200,
+                            url: "/api/products/categories",
+                            count: resultado.length
+                            },
+                        data: resultado
+                    }
+
+                    res.json(respuesta)
+
+                })
                 
-            })
-        }
+            }
     }
